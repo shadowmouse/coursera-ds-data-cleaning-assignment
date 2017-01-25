@@ -9,7 +9,11 @@ extract_data <- function () {
   duplicate <- duplicated(colnames(merged_data))
   dedup <- merged_data[,!duplicate]
   
-  #Extract Target Data Columns (Mean (mean) and Standard Dev (std))
-  target_data <- select(dedup, matches("mean|std|activity_label"))
-  print(str(target_data[1:5,]))
+  #Extract Target Data Columns (Mean (mean), Standard Dev (std), Activity Category, Subject ID)
+  target_data <- select(dedup, matches("mean|std|activity_label|subject_id"))
+  target_data <- select(target_data, -matches("^angle"))
+  target_data <- select(target_data, -matches("meanFreq"))
+  
+  #Return Target Data
+  return(target_data)
 }
