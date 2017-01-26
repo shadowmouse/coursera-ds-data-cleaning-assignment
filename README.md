@@ -27,6 +27,8 @@
 
 ### Methodology
 
+Note : Please read file comments for implementation details.
+
 Major functionality in this analysis script is broken down into separate named files containing their function.
 The first step is to retrieve and load the reference data files (activity and features) into their respective maps.
 These maps are passed to the data load function where the source data is loaded and the reference data is mapped onto the joined source files.
