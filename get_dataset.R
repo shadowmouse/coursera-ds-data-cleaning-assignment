@@ -1,5 +1,5 @@
 get_dataset <- function (path, activity_key, feature_key, limit=NULL) {
-  
+  print("Getting Dataset...")
   #Get Target Filenames
   files <- dir(path);
   data_filename <- files[grep("^X_", files)]
@@ -16,7 +16,8 @@ get_dataset <- function (path, activity_key, feature_key, limit=NULL) {
     source_label <- read.fwf(file.path(path, label_filename), c(1), n=limit)
     source_subject <- read.csv(file.path(path, subject_filename), header=FALSE, nrows=limit)
   }
-  
+  print("Dataset Loaded")
+  print("Merging Labels into Dataset...")
   data_key <- feature_key$feature_label;
   
   colnames(source_data) <- data_key;
@@ -31,7 +32,7 @@ get_dataset <- function (path, activity_key, feature_key, limit=NULL) {
   
   merged <- cbind(source_label, source_data);
   merged <- cbind(source_subject, merged);
-  
+  print("Labels Merged")
   return(merged)
   
 }

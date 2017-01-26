@@ -1,12 +1,13 @@
 library(dplyr)
 source("extract_data.R")
 format_data <- function (limit=NULL) {
+  
   if(is.null(limit)) {
     unformatted_data <- extract_data()
   } else {
     unformatted_data <- extract_data(limit)  
   }
-  
+  print("Formatting Columns...")
   formatted_data <- rename(unformatted_data, Subject = subject_id, Activity = activity_label)
   column_names <- colnames(formatted_data)
   index = 1
@@ -37,7 +38,7 @@ format_data <- function (limit=NULL) {
     index <- index + 1
   }
   colnames(formatted_data) <- column_names
-  
+  print("Columns Formatted.")
   return(formatted_data)
   
   

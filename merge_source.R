@@ -11,6 +11,8 @@ merge_source <- function (limit=NULL) {
     test_dataset <- get_dataset(file.path("Dataset","test"), activity_key, feature_key, 5)
     train_dataset <- get_dataset(file.path("Dataset","train"), activity_key, feature_key, 5)
   }
+  print("Merging Target Datasets...")
   merged_data = rbind(test_dataset, train_dataset)
+  print("Datasets Merged")
   return(merged_data)
 }
