@@ -25,11 +25,6 @@ print("Data Grouped")
 print("Summarizing Data...")
 data_summary <- summarize_each(by_subject, funs(mean))
 
-# Create Proto Codebook Output
-column_names <- colnames(data_summary)
-print("Data Summarized -- Saving File...")
-
 # Write Results Files
 write.csv(data_summary, file="tidydata.csv")
-write.csv(column_names, file="proto-codebook.csv")
 print("File Saved -- Analysis Complete")
