@@ -7,9 +7,13 @@ format_data <- function () {
   index = 1
   for( name in column_names) {
     components <- strsplit(name, "-")[[1]]
-    print(str(components))
-    if(length(grep("^[ft]", components[1])) > 0) {
+    if(length(grep("^f", components[1])) > 0) {
       components[1] <- substr(components[1], 2, nchar(components[1]))  
+      components[1] <- paste(components[1],"Frequecy",sep = ".",collapse = ".")
+    }
+    if(length(grep("^t", components[1])) > 0) {
+      components[1] <- substr(components[1], 2, nchar(components[1]))  
+      #components[1] <- paste(components[1],"Time",sep = ".",collapse = ".")
     }
     if(length(grep("^(mean)|^(std)", components[2])) > 0) {
       slice_end <-nchar(components[2]) - 2
@@ -27,7 +31,9 @@ format_data <- function () {
     column_names[index] <- paste(components, collapse = ".")
     index <- index + 1
   }
-  return(column_names)
+  colnames(formatted_data) <- column_names
+  
+  return(formatted_data)
   
   
 }
