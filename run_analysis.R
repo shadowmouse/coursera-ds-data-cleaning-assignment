@@ -1,0 +1,6 @@
+library(dplyr)
+source("format_data.R")
+source_data <- format_data()
+by_subject <- group_by(source_data, Activity, Subject)
+data_summary <- summarize_each(by_subject, funs(mean))
+write.csv(data_summary, file="tidydata.csv")
