@@ -19,6 +19,6 @@ Subsequently, the body linear acceleration and angular velocity were derived in 
 Values for the tidydata.csv summary output were derived from the mean of the mean values from the source dataset. (See Analysis Method section)
 
 * Any measurments with Acc in the column name are in standard gravity units 'g'.
-* Any measurments with Gryo in the column name are in radians/second
+* Any measurments with Gyro in the column name are in radians/second
 * Subject IDs have a range of 1 to 30
 * Activity is a plaintext descriptor of the performed activity
