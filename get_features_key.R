@@ -1,3 +1,11 @@
+## get_features_key.R
+## Author : Elliot Francis
+## Created : 2017-01-25
+## Build Features Column Map
+## Inputs
+##
+## Output
+##  features_key - Features Column Map
 get_features_key <- function () {
   print("Creating Features Key...")
   #Read Source Data
@@ -8,5 +16,5 @@ get_features_key <- function () {
   feature_key[,2] <- trimws(feature_key[,2], c("both"))
   print("Features Key Created")
   feature_key
-  
+
 }

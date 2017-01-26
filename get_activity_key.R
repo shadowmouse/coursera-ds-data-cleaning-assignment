@@ -1,3 +1,11 @@
+## get_activity_key.R
+## Author : Elliot Francis
+## Created : 2017-01-25
+## Build Activity Key Map
+## Inputs
+##
+## Output
+##  activity_key - Activity Key Map
 get_activity_key <- function () {
   print("Creating Activity Key...")
   #Read Source Data
@@ -8,5 +16,5 @@ get_activity_key <- function () {
   activity_key[,2] <- trimws(activity_key[,2], c("both"))
   print("Activity Key Created")
   activity_key
-  
+
 }
