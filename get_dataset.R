@@ -1,3 +1,4 @@
+library(readr)
 get_dataset <- function (path, activity_key, feature_key, limit=NULL) {
   print("Getting Dataset...")
   #Get Target Filenames
@@ -7,14 +8,16 @@ get_dataset <- function (path, activity_key, feature_key, limit=NULL) {
   subject_filename <- files[grep("^subject_", files)]
   
   #Read Source Data
+  data_file_positions <- fwf_widths(rep(16, nrow(feature_key)))
+  
   if(is.null(limit)) {
-    source_data <- read.fwf(file.path(path, data_filename), rep(16, nrow(feature_key)))  
-    source_label <- read.fwf(file.path(path, label_filename), c(1))
-    source_subject <- read.csv(file.path(path, subject_filename), header=FALSE)
+    source_data <- read_fwf(file.path(path, data_filename), data_file_positions)  
+    source_label <- read_table(file.path(path, label_filename), col_names = FALSE)
+    source_subject <- read_csv(file.path(path, subject_filename), col_names = FALSE)
   } else {
-    source_data <- read.fwf(file.path(path, data_filename), rep(16, nrow(feature_key)), n=limit)
-    source_label <- read.fwf(file.path(path, label_filename), c(1), n=limit)
-    source_subject <- read.csv(file.path(path, subject_filename), header=FALSE, nrows=limit)
+    source_data <- read_fwf(file.path(path, data_filename), data_file_positions, n_max=limit)
+    source_label <- read_table(file.path(path, label_filename), col_names = FALSE, n_max=limit)
+    source_subject <- read_csv(file.path(path, subject_filename), n_max= limit, col_names = FALSE)
   }
   print("Dataset Loaded")
   print("Merging Labels into Dataset...")
