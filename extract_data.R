@@ -1,8 +1,13 @@
 library(dplyr)
 source("merge_source.R")
-extract_data <- function () {
+extract_data <- function (limit=NULL) {
   # Get The Merged Data Set
-  merged_data <- merge_source(5)
+  if(is.null(limit)) {
+    merged_data <- merge_source()
+  } else {
+    merged_data <- merge_source(limit)    
+  }
+  
   
   #Deduplicate Columns
   names <- colnames(merged_data)
