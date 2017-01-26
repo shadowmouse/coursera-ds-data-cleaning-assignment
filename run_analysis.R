@@ -26,5 +26,5 @@ print("Summarizing Data...")
 data_summary <- summarize_each(by_subject, funs(mean))
 
 # Write Results Files
-write.csv(data_summary, file="tidydata.csv")
+write.table(data_summary, file="tidydata.txt", row.name=FALSE)
 print("File Saved -- Analysis Complete")
